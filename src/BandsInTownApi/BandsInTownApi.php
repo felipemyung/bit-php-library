@@ -329,9 +329,6 @@ class BandsInTownApi
         if (json_last_error() != JSON_ERROR_NONE) {
             throw new RequestFailedException('failed to decode response');
         }
-        if (!is_array($decodedResponse)) {
-            throw new RequestFailedException('invalid response format');
-        }
         if (array_key_exists('errors', $decodedResponse)) {
             $implodedErrors = implode(', ', $decodedResponse['errors']);
             throw new RequestFailedException("request returned a list of errors: ({$implodedErrors})");

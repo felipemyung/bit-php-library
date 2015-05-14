@@ -169,33 +169,6 @@ class BandsInTownApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException        \BandsInTownApi\Components\Exceptions\RequestFailedException
-     * @expectedExceptionMessage invalid response format
-     *
-     * @return void
-     */
-    public function testGetArtistMustThrownExceptionInvalidResponseFormat()
-    {
-        // Create a stub for the BandsInTownApi class.
-        /* @var BandsInTownApi $stub */
-        $stub = $this
-            ->getMockBuilder('\\BandsInTownApi\\BandsInTownApi')
-            ->setConstructorArgs(array('test_api_key'))
-            ->setMethods(array('curl'))
-            ->getMock()
-        ;
-        // Configure the stub.
-        $stub->method('curl')->willReturn(
-            array(
-                'httpCode' => 200,
-                'response' => 'NULL',
-            )
-        );
-        // call the method to trigger exception
-        $data = $stub->getArtist('none');
-    }
-
-    /**
      * @expectedException        \BandsInTownApi\Components\Exceptions\InvalidParameterException
      * @expectedExceptionMessage invalid date requested format
      *
